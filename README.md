@@ -33,18 +33,11 @@ Utilize-os com sabedoria para deixar seu código mais legível ou fazer anotaç�
 
 ### Exercício 1
 
-Utilizando o método acima, imprima no console uma mensagem com seu nome e a hora que você está estudando:
-
-<details>
-<summary>Alerta de spoiler</summary>
-
 ```JavaScript
 console.log(
   `Meu nome é ${Jonathan}, e eu estou estudando as ${23} horas e ${45} minutos`
 );
 ```
-
-</details>
 
 ## JavaScript no Navegador, Node.js e HTML
 
@@ -237,16 +230,6 @@ A principal vantagem da interpolação é que ela torna o código mais legível 
 
 #### Exercício 2
 
-Exiba uma mensagem no console que mostre as seguintes variáveis:
-
-- Nome
-- Sobrenome
-- Idade
-- Calculo IMC
-
-<details>
-<summary>Alerta de spoiler</summary>
-
 ```JavaScript
 const nome = "John";
 const sobrenome = "doe";
@@ -261,8 +244,6 @@ console.log("Meu nome é " + nome + " " + sobrenome + ", tenho " + idade + " e m
 // Interpolação de strings
 console.log( `Meu nome é ${nome} ${sobrenome}, tenho ${idade} e meu IMC é ${imc}`);
 ```
-
-</details>
 
 Note que todas as informações que não mudam (nome, sobrenome, formula imc) foram declaradas como `const` enquanto o restante foi declarado com `let`. Além disso, utilizando a interpolação de strings o código fica mais legível, por isso é assim que iremos utilizar daqui em diante.
 
@@ -462,7 +443,7 @@ O objeto `Math` fornece uma série de métodos matemáticos, como:
 
 Esses são apenas alguns exemplos dos muitos métodos e propriedades relacionados a números disponíveis em JavaScript. A escolha do método a ser usado depende das operações específicas que você deseja realizar em seus números e do formato desejado para os resultados.
 
-### Exercício
+### Exercício 3
 
 ```HTML
 <!DOCTYPE html>
@@ -745,3 +726,83 @@ console.log(mergedArray); // [1, 2, 3, 4]
 ```
 
 Em resumo, tipos de dados imutáveis são copiados por valor, enquanto tipos de dados mutáveis são copiados por referência. O operador de spread (`...`) é uma ferramenta útil para criar cópias de arrays e objetos e para mesclar múltiplos arrays em um único array. Ele é especialmente útil para evitar efeitos colaterais indesejados ao trabalhar com objetos e arrays em JavaScript.
+
+### Exercício 4
+
+```HTML
+<!DOCTYPE html>
+<html lang="pr-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background: goldenrod;
+        font-size: 20px;
+        font-weight: 600;
+      }
+    </style>
+
+    <title>Exercício 4</title>
+  </head>
+  <body>
+    <div class="container">
+      <form class="form" action="" method="get">
+        <label for="nome" class="form-label">Nome:</label>
+        <input type="text" class="form-control" id="nome" required />
+
+        <label for="sobrenome" class="form-label">Sobrenome:</label>
+        <input type="text" class="form-control" id="sobrenome" required />
+
+        <label for="peso" class="form-label">Peso:</label>
+        <input type="number" class="form-control" id="peso" required />
+
+        <label for="altura" class="form-label">Altura em Cm</label>
+        <input type="number" class="form-control" id="altura" required />
+
+        <button type="submit" id="submit" class="btn btn-dark">Enviar</button>
+      </form>
+    </div>
+
+    <div class="container resultado"></div>
+
+    <script>
+      function meuEscopo() {
+        const form = document.querySelector(".form");
+        const pessoas = [];
+
+        function recebeEventoForm(evento) {
+          evento.preventDefault();
+
+          const nome = form.querySelector("#nome").value;
+          const sobrenome = form.querySelector("#sobrenome").value;
+          const peso = form.querySelector("#peso").value;
+          const altura = form.querySelector("#altura").value;
+
+          function criaPessoa(nome, sobrenome, peso, altura) {
+            return { nome, sobrenome, peso, altura };
+          } // Criei uma função construtora;
+
+          pessoas.push(criaPessoa(nome, sobrenome, peso, altura)); //chamei a função construtora dentro do método push
+          console.log(pessoas);
+        }
+
+        form.addEventListener("submit", recebeEventoForm);
+      }
+      meuEscopo();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+```
